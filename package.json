@@ -1,0 +1,29 @@
+{
+  "name": "celtic-knot-maker",
+  "version": "1.0.0",
+  "description": "Celtic Knot Maker: draw breaks on a grid and the Celtic knotwork weaves itself, over and under, using George Bain's method. Color the strands and download the knot as SVG or PNG.",
+  "repository": "github:evoluteur/celtic-knot-maker",
+  "homepage": "https://evoluteur.github.io/celtic-knot-maker/",
+  "copyright": "(c) 2026 Olivier Giulieri",
+  "author": "Olivier Giulieri (https://evoluteur.github.io/)",
+  "license": "MIT",
+  "keywords": [
+    "celtic-knot",
+    "celtic-knot-maker",
+    "knotwork",
+    "interlace",
+    "george-bain",
+    "book-of-kells",
+    "celtic-art",
+    "mirror-curves",
+    "sacred-geometry",
+    "esoterica",
+    "svg",
+    "generator",
+    "pwa",
+    "javascript"
+  ],
+  "scripts": {
+    "sync:themes": "sh scripts/sync-omg-themes.sh"
+  }
+}

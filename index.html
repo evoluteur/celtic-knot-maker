@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-063933E3C2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-063933E3C2");
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celtic Knot Maker: Paint the Breaks, the Knot Weaves Itself</title>
+    <meta
+      name="description"
+      content="Celtic Knot Maker: draw breaks on a grid and the Celtic knotwork weaves itself, over and under, using George Bain's method. Color the strands and download the knot as SVG or PNG."
+    />
+    <meta
+      name="keywords"
+      content="celtic knot, celtic knot maker, celtic knot generator, knotwork, interlace, george bain, book of kells, plait, celtic art, irish, scottish, pictish"
+    />
+    <meta name="author" content="Olivier Giulieri" />
+    <link rel="canonical" href="https://evoluteur.github.io/celtic-knot-maker/" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <meta name="theme-color" content="#1a212d" />
+    <meta property="og:site_name" content="Evoluteur" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Celtic Knot Maker" />
+    <meta
+      property="og:description"
+      content="Draw breaks on a grid and the Celtic knotwork weaves itself, over and under."
+    />
+    <meta property="og:url" content="https://evoluteur.github.io/celtic-knot-maker/" />
+    <meta
+      property="og:image"
+      content="https://evoluteur.github.io/celtic-knot-maker/celtic-knot-maker.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Overpass"
+    />
+    <link id="omg-core-css" rel="stylesheet" href="css/core.css" />
+    <script>
+      // Themes (dark, light, evol-blue) are copies of omg-themes (npm run sync:themes);
+      // set OMG_THEMES_BASE to "https://evoluteur.github.io/omg-themes/" to link the hosted ones instead.
+      window.OMG_THEMES_BASE = "";
+      window.OMG_DEFAULT_THEME = "dark";
+      (function () {
+        var t = window.OMG_DEFAULT_THEME;
+        try {
+          t = localStorage.getItem("omg-theme") || t;
+        } catch (e) {}
+        if (t !== "dark" && t !== "light" && t !== "evol-blue")
+          t = window.OMG_DEFAULT_THEME;
+        document.documentElement.setAttribute("data-theme", t);
+        // written here (not in the markup) so the saved theme loads before first paint
+        document.write(
+          '<link id="omg-theme-css" rel="stylesheet" href="' +
+            window.OMG_THEMES_BASE +
+            "css/themes/" +
+            t +
+            "/" +
+            t +
+            '.css" />',
+        );
+      })();
+    </script>
+    <link id="omg-density-css" rel="stylesheet" href="css/densities.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/celtic.css" />
+
+    <script src="js/omg.js"></script>
+    <script src="js/celtic.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        addEventListener("load", () =>
+          navigator.serviceWorker.register("sw.js"),
+        );
+      }
+    </script>
+  </head>
+
+  <body
+    onload="
+      setupPage('home');
+      initCeltic();
+    "
+    id="omg-body"
+  >
+    <div id="omg-header">
+      <h1>Celtic Knot Maker</h1>
+      <div id="omg-header-tools">
+        <div id="omg-theme-picker"></div>
+        <a
+          id="omg-github"
+          href="https://github.com/evoluteur/celtic-knot-maker"
+          target="_blank"
+          rel="noopener"
+          title="Celtic Knot Maker on GitHub"
+          aria-label="Celtic Knot Maker on GitHub"
+          ><svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+            /></svg
+        ></a>
+      </div>
+    </div>
+    <noscript
+      ><p class="tagline">
+        Celtic Knot Maker draws with JavaScript. Enable it to make a knot.
+      </p></noscript
+    >
+    <h2>Paint the breaks, the knot weaves itself</h2>
+    <div class="content">
+      <p class="tagline">
+        Every Celtic knot starts as a plait: bands crossing over and under,
+        all the way across. Draw a wall across it and the bands turn back
+        there instead of crossing, and the plait becomes a knot. Drag on the
+        grid to draw walls, click a point to turn it, and watch the
+        knotwork weave itself, always over, under, over.
+      </p>
+
+      <div class="layout">
+        <div class="stage">
+          <div id="knot" class="canvas-box" aria-label="Celtic knot"></div>
+          <p class="note" id="strand-note" aria-live="polite"></p>
+          <div class="panel under">
+            <div
+              class="chips"
+              id="tool-chips"
+              role="group"
+              aria-label="Tool"
+            ></div>
+            <h3>Mirror what I draw</h3>
+            <div
+              class="chips"
+              id="sym-chips"
+              role="group"
+              aria-label="Symmetry"
+            ></div>
+            <p class="note" style="margin: 0">
+              Drag along the grid to draw a wall of breaks. Click a point to
+              switch it from crossing, to horizontal break, to vertical break.
+            </p>
+          </div>
+          <div class="panel under">
+            <h3>Save</h3>
+            <div class="btns">
+              <button type="button" id="export-png">Download PNG</button>
+              <button type="button" id="export-svg" class="ghost">
+                Download SVG
+              </button>
+            </div>
+            <p class="note" style="margin: 10px 0 0">
+              The address of the page keeps this knot, to share it. The grid
+              is never saved in the image.
+            </p>
+          </div>
+        </div>
+
+        <div class="side">
+          <div class="panel">
+            <h3>Grid</h3>
+            <div class="ctl">
+              <label for="cols">Columns</label
+              ><span class="val" id="cols-val"></span>
+              <input type="range" id="cols" min="2" max="16" step="1" />
+            </div>
+            <div class="ctl">
+              <label for="rows">Rows</label
+              ><span class="val" id="rows-val"></span>
+              <input type="range" id="rows" min="2" max="12" step="1" />
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Start from</h3>
+            <div
+              class="chips"
+              id="preset-chips"
+              role="group"
+              aria-label="Designs"
+            ></div>
+            <div class="ctl">
+              <label for="density">Random breaks</label
+              ><span class="val" id="density-val"></span>
+              <input type="range" id="density" min="5" max="100" step="5" />
+            </div>
+            <label class="opt"
+              ><input type="checkbox" id="o-single" /> Join into a single
+              strand</label
+            >
+            <div class="btns">
+              <button type="button" id="random">Random knot</button>
+              <button type="button" id="join" class="ghost">
+                Join the strands
+              </button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Look</h3>
+            <div
+              class="chips"
+              id="look-chips"
+              role="group"
+              aria-label="Colors"
+            ></div>
+            <div
+              class="chips"
+              id="style-chips"
+              role="group"
+              aria-label="Band style"
+            ></div>
+            <div class="ctl">
+              <label for="band">Band width</label
+              ><span class="val" id="band-val"></span>
+              <input type="range" id="band" min="0" max="100" step="5" />
+            </div>
+            <label class="opt"
+              ><input type="checkbox" id="o-colors" /> A color for each
+              strand</label
+            >
+            <label class="opt"
+              ><input type="checkbox" id="o-flip" /> Swap over and under</label
+            >
+            <label class="opt"
+              ><input type="checkbox" id="o-grid" /> Show the grid and
+              breaks</label
+            >
+          </div>
+
+        </div>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="layout info">
+        <div class="side wide">
+          <div class="panel">
+            <h3>Bain's method</h3>
+            <p class="note">
+              In <em>Celtic Art: The Methods of Construction</em> (1951),
+              George Bain showed how the knots of the Book of Kells and the
+              Pictish stones were laid out: a grid of dots, a plait drawn
+              through it, and "breaks" placed along the grid lines. Wherever a
+              break crosses the plait, the two bands are cut and joined the
+              other way. That is all this page does.
+            </p>
+          </div>
+        </div>
+        <div class="side wide">
+          <div class="panel">
+            <h3>Why it always weaves</h3>
+            <p class="note">
+              The crossings sit on the sides of the grid cells, like the
+              squares of a checkerboard. A band going down and right is over
+              on the vertical sides and under on the horizontal ones, so it
+              alternates over and under. When it turns back at a break it
+              skips one crossing but changes direction too, so it still
+              alternates. However you draw the breaks, the knot is always a
+              true weave.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>
+          The code of this page is
+          <a href="https://github.com/evoluteur/celtic-knot-maker">Open source</a>
+          with MIT license.
+        </p>
+        <p>
+          Had fun browsing the app?
+          <a href="https://github.com/sponsors/evoluteur"
+            >Buy me a coffee by becoming a sponsor</a
+          >.
+        </p>
+        <p>
+          You may also like
+          <a href="https://evoluteur.github.io/ogham-calendar/"
+            >Ogham Calendar</a
+          >,
+          <a href="https://evoluteur.github.io/kolam-maker/">Kolam Maker</a>,
+          <a href="https://evoluteur.github.io/labyrinth-maker/"
+            >Labyrinth Maker</a
+          >, and
+          <a href="https://evoluteur.github.io/rune-reading/">Rune Reading</a
+          >. See them all on
+          <a href="https://evoluteur.github.io/esoterica.html">Esoterica</a>.
+        </p>
+        <p class="copyright">
+          &#169; 2026
+          <a href="https://evoluteur.github.io/">Olivier Giulieri</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

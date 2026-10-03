@@ -1,0 +1,26 @@
+/* Celtic Knot Maker */
+
+.content {
+  max-width: 1120px;
+}
+#knot {
+  touch-action: none; /* drawing walls with a finger must not scroll the page */
+  cursor: crosshair;
+}
+/* the grid and the breaks, drawn over the knot while editing */
+#knot .grid circle {
+  fill: #e0533d;
+  opacity: 0.55;
+}
+#knot .breaks line {
+  stroke: #e0533d;
+  stroke-width: 4;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+.panel.under {
+  margin-top: 6px;
+}
+.panel.under h3 {
+  margin-top: 4px;
+}
